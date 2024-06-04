@@ -11,9 +11,9 @@ This project is a Python script that uses Selenium to scrape the top 5 trending 
 
 2. Make sure you have Chrome browser installed, and download the ChromeDriver for your Chrome version from [here](https://sites.google.com/a/chromium.org/chromedriver/downloads). Add the ChromeDriver executable to your PATH.
 
-3. Create a MongoDB database and collection. Replace the MongoDB URI and collection name in the `fetch_trends.py` file with your own.
+3. Create a MongoDB database and collection. Replace the MongoDB URI and collection name in the `combined_app.py` file with your own.
 
-4. Sign up for a ProxyMesh account and replace the `PROXYMESH_USERNAME` and `PROXYMESH_PASSWORD` in the `fetch_trends.py` file with your own credentials.
+4. Sign up for a ProxyMesh account and replace the `PROXYMESH_USERNAME` and `PROXYMESH_PASSWORD` in the `combined_app.py` file with your own credentials.
 
 5. Replace the `twitter_username` and `twitter_password` variables in the `combined_app.py` file with your own Twitter account credentials.
 
@@ -34,6 +34,8 @@ This project is a Python script that uses Selenium to scrape the top 5 trending 
 
 ## Demo Image
 
-![Demo](demo.png)
+![Demo]
+![WhatsApp Image 2024-06-04 at 18 06 35_17e14574](https://github.com/Sudipta638/Twitter_Trending_Topics/assets/124155704/63a6d7f0-4fef-41a6-821b-8e9d44ca6c63)
+
 
 **Note:** This project is for educational purposes only. Make sure to comply with Twitter's terms of service and use responsibly.
