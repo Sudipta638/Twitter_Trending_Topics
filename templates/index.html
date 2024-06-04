@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Twitter Trending Topics</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        background-color: #f0f0f0;
+      }
+      .container {
+        text-align: center;
+        background-color: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+      button {
+        padding: 10px 20px;
+        font-size: 16px;
+        margin-top: 20px;
+        cursor: pointer;
+      }
+      #results {
+        margin-top: 20px;
+      }
+      pre {
+        text-align: left;
+        background-color: #f8f8f8;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Twitter Trending Topics</h1>
+      <button onclick="runScript()">Click here to run the script</button>
+      <div id="results"></div>
+    </div>
+
+    <script>
+      function runScript() {
+        fetch("/run-script")
+          .then((response) => response.json())
+          .then((data) => {
+            const resultsDiv = document.getElementById("results");
+            const dateTime = data.dateTime;
+            const ipAddress = data.ipAddress;
+            const trends = data.trends;
+            const jsonExtract = JSON.stringify(data.jsonExtract, null, 4);
+
+            resultsDiv.innerHTML = `
+                        <p>These are the most happening topics as on ${dateTime}</p>
+                        <ul>
+                            ${trends
+                              .map((trend) => `<li>${trend}</li>`)
+                              .join("")}
+                        </ul>
+                        <p>The IP address used for this query was ${ipAddress}.</p>
+                        <pre>${jsonExtract}</pre>
+                        <button onclick="runScript()">Click here to run the query again</button>
+                    `;
+          })
+          .catch((error) => {
+            const resultsDiv = document.getElementById("results");
+            resultsDiv.innerHTML = `<p>Error: ${error.message}</p>`;
+          });
+      }
+    </script>
+  </body>
+</html>
