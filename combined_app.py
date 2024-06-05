@@ -13,12 +13,22 @@ import base64
 
 from bson import ObjectId
 import json
+
+from dotenv import load_dotenv
+import os
+
+# Load the environment variables from the .env file
+load_dotenv()
+
+# Now you can access the variables
+twitter_username = os.getenv('twitter_username')
+twitter_password = os.getenv('twitter_password')
+MongoDBUrl = os.getenv('MongoDBUrl')
+ProxyMeshUsername = os.getenv('ProxyMeshUsername')
+Proxymeshpassword = os.getenv('Proxymeshpassword')
+
 #Credentials
-twitter_username = ""
-twitter_password =""
-MongoDBUrl =""
-ProxyMeshUsername =""
-Proxymeshpassword =""
+
 
 class JSONEncoder(json.JSONEncoder):
     def default(self, o):
